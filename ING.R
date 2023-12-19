@@ -122,7 +122,7 @@ df <- df %>%
 
 #FEATURE ENGINEERING: INDICI DI BILANCIO
 #LIQUIDITA'
-#Indice di disponibilit‡
+#Indice di disponibilit√†
 short_ass <- colnames(df[,23:31])
 ind_disp <- rowSums(df[,short_ass]) / df$BFD_CYN_LB_LP_STM ###
 #Turnover
@@ -130,14 +130,14 @@ rvn <- (df$BFD_CYN_ISN_RVN + df$BFD_CYN_ISN_OPEXP_PROLL)
 ind_turn <-rvn / df$BFD_CYN_AS ###
 #Rotazione delle rimanenze di magazzino
 inventory <- colnames(df[,23:24])
-ind_rot_mag <- rvn / rowSums(df[,inventory]) #oss con Inf perchË hanno 0
-#Sostenibilit‡ degli oneri finanziari
+ind_rot_mag <- rvn / rowSums(df[,inventory]) #oss con Inf perch√® hanno 0
+#Sostenibilit√† degli oneri finanziari
 ind_sost_on_fin <- df$BFD_CYN_ISN_FEXP_INT / rvn ###
 #Debiti a breve termine su fatturato
 ind_deb_su_fat <- df$BFD_CYN_LB_LP_STM / rvn ###
-#Elasticit‡ dell'attivo
+#Elasticit√† dell'attivo
 ind_ela_att <- rowSums(df[,short_ass]) / df$BFD_CYN_AS ###
-#Liquidit‡ sul fatturato
+#Liquidit√† sul fatturato
 ind_liq_fat <- df$BFD_CYN_AS_CRT_SINV_FA_CPA / rvn
 #Acid Test
 ind_acid <- (rowSums(df[,short_ass]) - rowSums(df[,inventory])) / df$BFD_CYN_LB_LP_STM
